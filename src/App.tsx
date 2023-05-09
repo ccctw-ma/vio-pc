@@ -13,9 +13,9 @@ function App() {
   async function greet() {
     // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
     setGreetMsg(await invoke("greet", { name }));
+    await invoke('ping');
     const appversion = await getVersion();
-    console.log(appversion);
-    
+    console.log(appversion); 
     setAppVersion(appversion);
   }
 
@@ -36,7 +36,7 @@ function App() {
       </div>
 
       <p>Click on the Tauri, Vite, and React logos to learn more. {appVersion}</p>
-      <p>Hi, I'm msc, this is my first time to see you tauri, I'm really appreciate to have this oppoturinity </p>
+      <p className=" text-pink-500">Hi, I'm msc, this is my first time to see you tauri, I'm really appreciate to have this oppoturinity </p>
       <div className="row">
         <form
           onSubmit={(e) => {

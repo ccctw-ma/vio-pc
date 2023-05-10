@@ -2,7 +2,6 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 mod app;
-
 use app::menu;
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
@@ -20,7 +19,7 @@ fn main() {
     tauri::Builder::default()
         .menu(menu::init())
         .on_menu_event(menu::menu_handler)
-        .invoke_handler(tauri::generate_handler![greet, ping])
+        .invoke_handler(tauri::generate_handler![greet, ping, app::file::read_trajectory])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

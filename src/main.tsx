@@ -9,7 +9,7 @@ import {
     Route,
     Link,
 } from "react-router-dom";
-import Config from "./pages/config";
+import Config from "./pages/Config";
 const router = createBrowserRouter([
     {
         path: "/",

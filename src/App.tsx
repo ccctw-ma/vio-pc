@@ -3,6 +3,7 @@ import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/tauri";
 import { getVersion } from "@tauri-apps/api/app";
 import { Table, DatePicker, Button, Space } from "antd";
+import Trajectory3D from "./components/Trajectory3D";
 
 interface DataType {
     time: string;
@@ -17,6 +18,7 @@ function App() {
     const [name, setName] = useState("");
     const [appVersion, setAppVersion] = useState("");
     const [trajectorys, setTra] = useState<Array<DataType>>([]);
+    const [rawData, setRawData] = useState<Array<string>>([]);
 
     async function greet() {
         // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
@@ -33,6 +35,7 @@ function App() {
     useEffect(() => {
         (async () => {
             const trajects: Array<string> = await invoke("read_trajectory");
+            setRawData(trajects);
             let columns: Array<DataType> = [];
             trajects.forEach((s) => {
                 let arr = s.split(" ");
@@ -52,8 +55,8 @@ function App() {
     }, []);
 
     return (
-        <div className="flex w-full justify-center items-center">
-            <Table
+        <div className="flex flex-col pt-8 w-full justify-center items-center">
+            {/* <Table
                 columns={[
                     {
                         title: "TimeStamp",
@@ -84,7 +87,9 @@ function App() {
                 dataSource={trajectorys}
                 bordered
                 title={() => <h2 className="text-center">Trajectorys</h2>}
-            />
+            /> */}
+
+            <Trajectory3D trajectorys={rawData} />
         </div>
     );
 }

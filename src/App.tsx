@@ -4,6 +4,7 @@ import { invoke } from "@tauri-apps/api/tauri";
 import { getVersion } from "@tauri-apps/api/app";
 import { Table, DatePicker, Button, Space } from "antd";
 import Trajectory3D from "./components/Trajectory3D";
+import Trajectory3D2 from "./components/Trajectory3D2";
 
 interface DataType {
     time: string;
@@ -55,7 +56,7 @@ function App() {
     }, []);
 
     return (
-        <div className="flex flex-col pt-8 w-full justify-center items-center">
+        <div className="flex flex-col pt-8 w-full h-screen justify-center items-center">
             {/* <Table
                 columns={[
                     {
@@ -89,7 +90,7 @@ function App() {
                 title={() => <h2 className="text-center">Trajectorys</h2>}
             /> */}
 
-            <Trajectory3D trajectorys={rawData} />
+            <Trajectory3D2 trajectorys={rawData} />
         </div>
     );
 }

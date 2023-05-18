@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
-import Box from "./Box";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 
@@ -64,7 +63,7 @@ export default function Trajectory3D({ trajectorys }: Props) {
     });
 
     const points = rows.map((row) => [row.x, row.y, row.z]);
-    console.log(points);
+    // console.log(points);
 
     return (
         <div className="w-full flex justify-center items-center">
